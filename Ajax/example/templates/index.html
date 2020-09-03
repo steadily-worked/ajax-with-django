@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ajax test</h1>
+    <p id='example'>hello<br></p>
+    <input type='button' id='execute' value='execute' />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- jQuery 라이브러리 사용 -->
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script>
+        $('#execute').click(function() {
+            $.ajax({
+                url:'{% url "ajax" %}',
+                dataType: 'json',
+                success: function(data){
+                    alert('good');
+                    var str= '';
+                    for (var name in data){
+                        str += '<li>We are: '+name+'</li>'; // key값 출력시 name
+                        str += '<li>Members: '+Object.keys(data[name][0]).join(' ')+'</li>';
+                    }
+                    $('#example').html('<ul>'+str+'</ul>')
+                },
+                error: function(request, status, error){
+                    alert('bad');
+                    alert(error);
+                    $('#example').html('AJAX 통신에 실패했습니다.')
+                }
+            })
+        })
+    </script>
+</body>
+</html>
