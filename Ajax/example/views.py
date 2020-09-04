@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import simplejson as json
+import json
 
 # Create your views here.
 def main(request):

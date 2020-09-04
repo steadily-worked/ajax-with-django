@@ -23,9 +23,9 @@
                 success: function(data){
                     alert('good');
                     var str= '';
-                    for (var name in data){
+                    for (var name in data.Organization){
                         str += '<li>We are: '+name+'</li>'; // key값 출력시 name
-                        str += '<li>Members: '+Object.keys(data[name][0]).join(' ')+'</li>';
+                        str += '<li>Members: '+name.name+'</li>';
                     }
                     $('#example').html('<ul>'+str+'</ul>')
                 },
