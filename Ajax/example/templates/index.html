@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ajax test</h1>
-    <p id='example'>hello<br></p>
-    <input type='button' id='execute' value='execute' />
+    <button id='listButton'>리스트 출력</button>
+    <br/>
+    <div id='example'></div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -16,23 +16,19 @@
     <!-- jQuery 라이브러리 사용 -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script>
-        $('#execute').click(function() {
+        $('#listButton').click(function() {
             $.ajax({
-                url:'{% url "ajax" %}',
-                dataType: 'json',
+                type: "GET", 
+                url:"{% url 'list' %}",
+                dataType: 'html',
                 success: function(data){
                     alert('good');
-                    var str= '';
-                    for (var name in data.Organization){
-                        str += '<li>We are: '+name+'</li>'; // key값 출력시 name
-                        str += '<li>Members: '+name.name+'</li>';
-                    }
-                    $('#example').html('<ul>'+str+'</ul>')
+                    $('#example').html(data)
                 },
                 error: function(request, status, error){
                     alert('bad');
                     alert(error);
-                    $('#example').html('AJAX 통신에 실패했습니다.')
+                    $('#example').html('AJAX 통신에 실패했습니다.');
                 }
             })
         })
