@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 import json
 
 # Create your views here.
@@ -10,7 +11,6 @@ def main(request):
 def list(request):
     data = {1: 'some data'}
     return JsonResponse(data=data)
-
 # def ajax(request): 이 부분은 JSON을 이용해서 Data만 그대로 가져오는 과정임
 #     data = {
 #       'Organization': [

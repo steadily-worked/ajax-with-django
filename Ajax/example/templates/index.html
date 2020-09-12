@@ -16,22 +16,6 @@
     <!-- jQuery 라이브러리 사용 -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script>
-//        $('#listButton').click(function() {
-//            $.ajax({
-//                type: "GET", 
-//                url:"{% url 'list' %}",
-//                dataType: 'html',
-//                success: function(data){
-//                    alert('good');
-//                    $('#example').html(data);
-//                },
-//                error: function(request, status, error){
-//                    alert('bad');
-//                    alert(error);
-//                    $('#example').html('AJAX 통신에 실패했습니다.');
-//                }
-//            })
-//        })
         $('#listButton').click(function() {
             $.ajax({
                 type: "GET",
@@ -47,7 +31,7 @@
                     $('#example').html('AJAX 통신에 실패했습니다.');
                 }
             });
-        })
+        });
     </script>
 </body>
 </html>
