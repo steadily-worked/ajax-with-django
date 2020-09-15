@@ -10,7 +10,12 @@ def main(request):
 #     return render(request, 'list.html')
 def list(request):
     data = {1: 'some data'}
-    return JsonResponse(data=data)
+    response = JsonResponse(data=data)
+    response['Access-Control-Allow-Methods'] = 'GET,POST,OPTIONS'
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Acess-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+    return response
 # def ajax(request): 이 부분은 JSON을 이용해서 Data만 그대로 가져오는 과정임
 #     data = {
 #       'Organization': [
