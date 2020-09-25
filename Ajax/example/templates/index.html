@@ -20,7 +20,7 @@
             $.ajax({
                 type: "GET",
                 url: "127.0.0.1:8000/list",
-                dataType: 'jsonp',
+                dataType: 'json',
                 success: function(data){
                     alert('good');
                     $('#example').html(data);

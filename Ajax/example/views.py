@@ -4,6 +4,8 @@ from django.http import JsonResponse
 import json
 
 # Create your views here.
+def left(request):
+    return render(request, 'left.html')
 def main(request):
     return render(request, 'index.html')
 # def list(request):
